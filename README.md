@@ -5,8 +5,11 @@ speech_map_video
 
 If you have it, place this folder inside the host folder. It should be in /var/www in Linux. 
 
-2. Place mp4 video in root folder (/speech_map_video). 
-   Comment out current video source in index.html. 
-   Uncomment video source for stitched.mp4
+2. You should have a local copy of all the annotations in a specific folder. Link that folder to here as data
+ln -s <path to folder> data
 
-3. Run localhost/speech_map_video in Mozilla browser. 
+3. If you do the linking, run ./prepare_annotations_and_gps_data.py
+
+4. Run localhost/speech_map_video in Mozilla browser. 
+
+5. TODO create a way of selecting which run in main.js
