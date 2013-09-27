@@ -41,25 +41,31 @@ var offsets = {
 };
 
 
+function videoReset() {
 
-$(document).ready(function() {
-    pop = Popcorn.youtube("#youtube", videoLinks[runID]);
-    $('.clear').on('click', function() {
-	$('.transcript').text('');
+    $(document).ready(function() {
+	pop = Popcorn.youtube("#youtube", videoLinks[runID]);
+	$('.clear').on('click', function() {
+	    $('.transcript').text('');
+	});
+	
     });
+}
 
-});
-
+videoReset();
 function runSelect(runValue) {
+    debugger;
     runID = runValue;
     runDir = './data/' + runValue;
-    document.getElementById("debug").value = runDir;
+    pop.destroy();
+    videoReset();
+    maps();
 }
 
 function getLocation() {
     console.log('start!');
     $.ajax({
-	url: runDir + '/downsampled_data_streams.xml',
+    url: runDir.concat('/downsampled_data_streams.xml'),
 	type: 'GET',
 	dataType: 'xml',
 	complete: function(xhr, textStatus) {},
@@ -95,8 +101,9 @@ function getLocation() {
 }
 
 function getAnnotations() {
+    debugger;
     $.ajax({
-	url: runDir + '/object-reference.xml',
+    url: runDir.concat('/object-reference.xml'),
 	type: 'GET',
 	dataType: 'xml',
 	complete: function(xhr, textStatus) {
