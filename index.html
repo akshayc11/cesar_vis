@@ -16,7 +16,7 @@
     <div id="video-container" style="width:80%; height: 100%; float: left; outline:1px solid white;">
       
       <div id="runMenu" style="width: 100%; height: 4%; color: white"> 
-	<form action="">Select Run
+	<form action="">Select Run:
 	  <select name="Runs" onchange="runSelect(this.value)">
 	    <option value="CESAR_Jun-Sun-3-09-09-17-2012">CESAR_Jun-Sun-3-09-09-17-2012</option>
 	    <option value="CESAR_Jun-Sun-3-11-10-36-2012">CESAR_Jun-Sun-3-11-10-36-2012</option>
@@ -33,6 +33,14 @@
 	    <option value="CESAR_May-Thu-31-15-06-55-2012">CESAR_May-Thu-31-15-06-55-2012</option>
 	    <option value="CESAR_May-Tue-29-13-06-47-2012">CESAR_May-Tue-29-13-06-47-2012</option>
 	  </select>
+	  &nbsp Select Annotation Type:
+	  <select name="AnnotationTypes" onchange="annotationSelect(this.value)">
+	    <option value="/object-reference.xml">Object Reference Visualization</option>
+	    <option value="/NDU.xml">Navigation Discourse Unit Visualization</option>
+	  </select>
+	</form>
+	<form action=""> 
+	  
 	</form>
       </div>
       <div id="map-canvas" style="width: 100%; height: 48%"></div>

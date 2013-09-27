@@ -4,6 +4,7 @@ var prevWord;
 var speakers = {};
 var runID = 'CESAR_Jun-Sun-3-09-09-17-2012';
 var runDir = './data' + '/' + runID;
+var annotationFile = '/object-reference.xml'
 var videoLinks = {
     'CESAR_Jun-Sun-3-09-09-17-2012'  : 'http://youtu.be/QyhkQM8YeFs',
     'CESAR_Jun-Sun-3-11-10-36-2012'  : 'http://youtu.be/6y2TabtMBZg',
@@ -53,13 +54,26 @@ function videoReset() {
 }
 
 videoReset();
-function runSelect(runValue) {
-    debugger;
-    runID = runValue;
-    runDir = './data/' + runValue;
+
+function reInitialize() {
     pop.destroy();
+    delete annotations;
+    annotations = new Object();
     videoReset();
     maps();
+}
+
+function runSelect(runValue) {
+    // debugger;
+    runID = runValue;
+    runDir = './data/' + runValue;
+    reInitialize();
+}
+
+function annotationSelect(annotationValue) {
+    // debugger;
+    annotationFile=annotationValue;
+    reInitialize();
 }
 
 function getLocation() {
@@ -101,9 +115,9 @@ function getLocation() {
 }
 
 function getAnnotations() {
-    debugger;
+    // debugger;
     $.ajax({
-    url: runDir.concat('/object-reference.xml'),
+    url: runDir.concat(annotationFile),
 	type: 'GET',
 	dataType: 'xml',
 	complete: function(xhr, textStatus) {
